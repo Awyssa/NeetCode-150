@@ -1,0 +1,21 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"eslint:recommended"
+	],
+	"parserOptions": {
+		"ecmaVersion": "latest"
+	},
+	"rules": {
+		"semi": ["warn", "always"],
+		"quotes": ["warn", "double"],
+		"eqeqeq": ["warn", "always"],
+		"no-unused-vars": ["warn"],
+		"no-redeclare": ["warn"],
+		"no-undef": ["warn"],
+		"indent": ["warn", "tab"]
+	}
+}

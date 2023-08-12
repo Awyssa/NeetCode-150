@@ -1,2 +1,2 @@
-# Blind-75-and-NeetCode-150
-Tracking my Blind 75 and NeetCode 150 pathway
+Grinding NeetCode 150
+https://neetcode.io/
