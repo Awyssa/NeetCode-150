@@ -1,12 +1,11 @@
 const productExceptSelf = (nums) => {
-	const returnArray = [];
-	for(let i = 0; i < nums.length; i++) {
-		const sum = nums.reduce((a, b, index) => {
+	const returnArray = nums.map((num, index) => {
+		const sum = nums.reduce((a, b, i) => {
 			if(i === index)
 				return a;
 			return a * b;
 		}, 1);
-		returnArray.push(sum);
-	}
+		return sum;
+	});
 	return returnArray;
 };
