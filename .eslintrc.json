@@ -1,21 +1,29 @@
 {
-	"env": {
-		"es2021": true,
-		"node": true
-	},
-	"extends": [
-		"eslint:recommended"
-	],
-	"parserOptions": {
-		"ecmaVersion": "latest"
-	},
-	"rules": {
-		"semi": ["warn", "always"],
-		"quotes": ["warn", "double"],
-		"eqeqeq": ["warn", "always"],
-		"no-unused-vars": ["warn"],
-		"no-redeclare": ["warn"],
-		"no-undef": ["warn"],
-		"indent": ["warn", "tab"]
-	}
+    "env": {
+        "node": true,
+        "jest": true
+    },
+    "plugins": [
+        "jest"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:jest/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "no-mixed-spaces-and-tabs": 0,
+        "indent": ["warn", "tab"],
+        "no-multiple-empty-lines": "warn",
+        "no-trailing-spaces": "warn",
+        "semi": ["warn", "always"],
+        "quotes": ["warn", "double"],
+        "semi-style": ["warn", "last"],
+        "brace-style": ["warn", "stroustrup"],
+        "comma-dangle": ["warn", "never"],
+        "no-useless-escape": 0,
+        "keyword-spacing": ["warn", { "after": true, "before": true }]
+    }
 }
