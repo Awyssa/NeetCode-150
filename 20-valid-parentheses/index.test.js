@@ -36,9 +36,23 @@ describe("isValid", () => {
 		expect(value).toBe(false);
 	});
 
-	it.only("should return false for the string ([)]", () => {
+	it("should return false for the string ([)]", () => {
 
 		const value = isValid("([)]");
+
+		expect(value).toBe(false);
+	});
+
+	it("should return false for the string ([]){", () => {
+
+		const value = isValid("([]){");
+
+		expect(value).toBe(false);
+	});
+
+	it("should return false for the string ([}}])", () => {
+
+		const value = isValid("([}}])");
 
 		expect(value).toBe(false);
 	});
