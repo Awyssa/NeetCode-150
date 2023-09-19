@@ -17,9 +17,9 @@
 
 const groupAnagrams = (words) => {
 	let returnObject = {};
-	for(let word of words) {
+	for (let word of words) {
 		const sortedWord = word.split("").sort().join("");
-		if(!returnObject[sortedWord])
+		if (!returnObject[sortedWord])
 			returnObject[sortedWord] = [word];
 		else
 			returnObject[sortedWord].push(word);
