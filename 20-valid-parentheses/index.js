@@ -1,33 +1,50 @@
-const isValid = (string) => {
-
-	const sLen = string.length;
-
-	if (sLen <= 1 || sLen  % 2 !== 0) {
-		return false;
-	}
-
-	const stack = [];
-
-	const correctBracesObj = {
-		")": "(",
-		"}": "{",
-		"]": "["
-	};
-
-	for (let i = 0; i < sLen; i++) {
-		if (correctBracesObj[string[i]]) {
-			if (stack.length && stack[stack.length - 1] === correctBracesObj[string[i]]) {
-				stack.pop();
-			}
-			else {
-				return false;
-			}
-		}
-		else {
-			stack.push(string[i]);
-		}
-	}
-	return !stack.length;
+var MinStack = function() {
+	this.stack = [];
+	this.minStack = [];
 };
 
-module.exports = { isValid };
+/**
+* @param {number} val
+* @return {void}
+*/
+MinStack.prototype.push = function(val) {
+	this.stack.push(val);
+	if (this.minStack.length === 0 || val <= this.minStack[this.minStack.length - 1]) {
+		this.minStack.push(val);
+	}
+};
+
+/**
+* @return {void}
+*/
+MinStack.prototype.pop = function() {
+	if (this.stack.length > 0) {
+		const poppedValue = this.stack.pop();
+		if (poppedValue === this.minStack[this.minStack.length - 1]) {
+			this.minStack.pop();
+		}
+	}
+};
+
+/**
+* @return {number}
+*/
+MinStack.prototype.top = function() {
+	return this.stack[this.stack.length - 1];
+};
+
+/**
+* @return {number}
+*/
+MinStack.prototype.getMin = function() {
+	return this.minStack[this.minStack.length - 1];
+};
+
+/**
+* Your MinStack object will be instantiated and called as such:
+* var obj = new MinStack()
+* obj.push(val)
+* obj.pop()
+* var param_3 = obj.top()
+* var param_4 = obj.getMin()
+*/
