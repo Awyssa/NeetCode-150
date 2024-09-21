@@ -1,68 +1,69 @@
-const correctIndexs = [];
+//This code allows you to create a grocery list. For each item you add, it will generate a random quantity of that item for you to buy (max 5 each).
 
-// Set the initial return value as true
-let check = true;
+//Empty array to store items from user's input
+const items = [];
 
-const checkForEvenSpace = (a, b) => {
+const startList = alert("Let's do the grocery list for this week!");
 
-	console.log("checking for even space", a, b);
-	const value = b - a - 1;
+console.log(`Grocery List:`);
 
-	console.log("value  ===", value);
+//Function to start the prompts and collect the items the user wants to insert in the list
+function shoppingList() {
 
-	console.log("bool ===", value % 2 === 0);
+  let shoppingItem = prompt("What item do you want to buy?");
 
-	return value % 2 === 0;
-};
-
-const checkForCorrectBrace = (s, si) => {
-
-	// Id the the correct closing brace
-	const correctBrace = correctBracesObj[s];
-
-	console.log("s ===", s);
-	console.log("si ===", si);
-	console.log("correctBrace ===", correctBrace);
-
-	// Loop through the rest of the string to find the correct closing brace
-	for (let i = si + 1; i < string.length; i++) {
-
-		console.log("string i ===", string[i]);
-
-		// If a char is the same opening brace, set check for false and return;
-		if (string[i] === s) {
-			check = false;
-			return false;
-		}
-
-		if (string[i] === correctBrace && checkForEvenSpace(si, i)) {
-			console.log("FOUND YOU!", i);
-			correctIndexs.push(i);
-			return true;
-		}
-
-		if (i === string.length - 1) {
-			check = false;
-		}
-	}
-};
-
-if (string.length <= 1 || string.length % 2 !== 0) {
-	return false;
+  if (shoppingItem) {
+    //Remove any whitespace from both sides of the string input, capitalize the first letter of the input, and ensure all other letters are lowercase
+    shoppingItem =
+      shoppingItem.trim().charAt(0).toUpperCase() +
+      shoppingItem.slice(1).toLowerCase();
+    
+    //Add each item to the items array and then restart the ShoppingList() function to give the user the possibility to add other items to the list
+    items.push(shoppingItem);
+    shoppingList();
+    
+    //If the user cancel the first prompt, the code will alert the user that their list is empty
+  } else if (items.length === 0) {
+    alert("Your list is empty");
+    console.log("Your list is empty");
+    
+  } else if (!shoppingItem) {
+    prompt("You didn't insert any item, do you want to add anything else?")
+    return
+  }
+  //   items.push(shoppingItem);
+  //   shoppingList();
+    
+  //   //If the user cancel a prompt after the first one, the code will alert that the list is ready to see in the console
+  // } else {
+  //   return alert("Great! Now have a look at your grocery list in the console");
+  // }
 }
 
-// Loop through each char except the last one, and check it has a correct ending brace
-for (let i = 0; i < string.length - 1; i++) {
+//Calling the first function
+shoppingList();
 
-	if (correctIndexs.includes(i))
-		continue;
+//Function to create an object and transform each item from the items array in a key and assign them a random value with Math.random to generate a random quantity for each item
+function createObjectList() {
+  
+  //Empty object
+  const randomItemsNumbers = {};
 
-	// If the check has failed, break and return false;
-	if (!check)
-		break;
+  //Loop through the items array to create the properties of the object (key=item value, value=random number), the value will be a random number between 1 and 5
+  for (let i = 0; i < items.length; i++) {
+    randomItemsNumbers[items[i]] = Math.floor(Math.random() * 5) + 1;
+  }
 
-	// Check for a correct closing brace
-	checkForCorrectBrace(string[i], i);
+  //Loop that uses the object method Object.entries to access each key and value of the randomItemsNumbers object to console.log the grocery list items and linked random quantity
+  for (let [item, amount] of Object.entries(randomItemsNumbers)) {
+    console.log(`${item} x${amount}`);
+  }
+
+  //Another way of achieving the same result of the last loop
+  //for (let key in randomItemsNumbers) {
+  //console.log(`${key} x${randomItemsNumbers[key]}`)
+  //}
 }
 
-return check;
+//Calling the function
+createObjectList();

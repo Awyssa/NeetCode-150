@@ -2,7 +2,8 @@
     "env": {
         "node": true,
         "jest": true,
-        "es6": true
+        "es6": true,
+        "browser": true
     },
     "plugins": [
         "jest"
@@ -13,18 +14,5 @@
     ],
     "parserOptions": {
         "ecmaVersion": "latest"
-    },
-    "rules": {
-        "no-mixed-spaces-and-tabs": 0,
-        "indent": ["warn", "tab"],
-        "no-multiple-empty-lines": "warn",
-        "no-trailing-spaces": "warn",
-        "semi": ["warn", "always"],
-        "quotes": ["warn", "double"],
-        "semi-style": ["warn", "last"],
-        "brace-style": ["warn", "stroustrup"],
-        "comma-dangle": ["warn", "never"],
-        "no-useless-escape": 0,
-        "keyword-spacing": ["warn", { "after": true, "before": true }]
     }
 }
