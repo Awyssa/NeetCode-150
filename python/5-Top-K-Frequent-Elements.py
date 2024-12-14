@@ -43,6 +43,6 @@ class Solution:
 
 ```
 Time & Space Complexity
-Time complexity: O(nlogn)
-Space complexity: O(n)
+Time complexity = O(nlogn)
+Space complexity = O(n)
 ```
